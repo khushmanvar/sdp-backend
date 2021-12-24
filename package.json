@@ -1,0 +1,8 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "Backend App for SDP Project",
+  "main": "index.js",
+  "author": "Khush, Mansi",
+  "license": "MIT"
+}

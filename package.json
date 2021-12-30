@@ -4,5 +4,17 @@
   "description": "Backend App for SDP Project",
   "main": "index.js",
   "author": "Khush, Mansi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2",
+    "firebase": "8.7.1",
+    "firebase-admin": "^10.0.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "engines": {
+    "node": ">=14.x"
+  }
 }

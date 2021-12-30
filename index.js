@@ -1,14 +1,19 @@
-const http = require('http');
+var express = require('express');
+var app = express();
+const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5000
+const { login } = require("./handlers/user")
 
-const hostname = '127.0.0.1';
-const port = 3000;
+// express middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+// user routes
+app.post('/login', login);
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.get('/', (req, res) => {
+  res.send('Welcome to the Easybus!')
+})
+
+app.listen(PORT, function () {
+  console.log(`Easybus server is listening on port: ${PORT}!`); });

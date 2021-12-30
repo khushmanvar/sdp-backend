@@ -8,8 +8,8 @@ const { login } = require("./handlers/user")
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// user routes
-app.post('/login', login);
+// admin routes
+app.post('/admin  /login', login);
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Easybus!')

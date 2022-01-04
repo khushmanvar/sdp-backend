@@ -46,6 +46,6 @@ exports.search = async (req, res) => {
     } catch (error) {
         return res
             .status(500)
-            .json({ 'error': error});
+            .json({ 'error': error.message});
     }
 };

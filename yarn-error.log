@@ -1,0 +1,46 @@
+Arguments: 
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add express
+
+PATH: 
+  /home/khush/.cargo/bin:/home/khush/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/home/khush/Android/Sdk/emulator:/home/khush/Android/Sdk/tools:/home/khush/Android/Sdk/tools/bin:/home/khush/Android/Sdk/platform-tools:/opt/GoLand-2020.3.1/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  16.13.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
+
+npm manifest: 
+  {
+    "name": "back",
+    "version": "1.0.0",
+    "description": "Backend App for SDP Project",
+    "main": "index.js",
+    "author": "Khush, Mansi",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.17.2",
+      "firebase": "^8.7.1",
+      "firebase-admin": "^10.0.1"
+    },
+    "scripts": {
+      "start": "node index.js",
+      "test": "node test.js"
+    },
+    "engines": {
+      "node": ">=14.x"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

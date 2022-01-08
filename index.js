@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000
-const { login } = require("./handlers/user")
-const { conductLogin } = require("./handlers/conductor")
+const { conductLogin, getConductorDetails } = require("./handlers/conductor")
 const {search} = require("./handlers/searchBus")
 const {signup} = require("./handlers/signup");
 const {signin} = require("./handlers/signin");
@@ -12,8 +12,10 @@ const {userDetails} = require("./handlers/userDetails");
 // express middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
 
 // admin routes
+app.get('/admin/details', getConductorDetails)
 app.post('/admin/login', conductLogin);
 
 // user routes

@@ -3,6 +3,7 @@ var app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000
 const { login } = require("./handlers/user")
+const { conductLogin } = require("./handlers/conductor")
 const {search} = require("./handlers/searchBus")
 const {signup} = require("./handlers/signup");
 const {signin} = require("./handlers/signin");
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // admin routes
-app.post('/admin  /login', login);
+app.post('/admin/login', conductLogin);
 
 // user routes
 app.get('/search', search);

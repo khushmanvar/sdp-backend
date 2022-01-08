@@ -1,6 +1,7 @@
 const { firebase } = require("../util/fire");
+const { db } = require("../util/admin")
 
-exports.login = (req, res) => {
+exports.conductLogin = (req, res) => {
     const user = {
       email: req.body.email,
       password: req.body.password,
@@ -22,3 +23,22 @@ exports.login = (req, res) => {
           .json({ general: "Wrong credentials, please try again" });
       });
 };
+
+exports.getConductorDetails = (req, res) => {
+  let userData = {};
+
+  db.doc(``)
+    .get()
+    .then((doc) => {
+      if(doc.exists) {
+        userData.user = doc.data();
+        return db.collection("").where("").orderBy("").get("");
+      } else {
+        return res.status(404).json({ error: "Conductor not found" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    });
+}

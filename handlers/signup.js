@@ -15,6 +15,7 @@ exports.signup = (req, res) => {
       emailVerified: false,
       phoneNoVerified: false
     }).then(() => {
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
         return res.status(200).json({general: "Signup Success"});
     });
   })

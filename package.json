@@ -6,6 +6,7 @@
   "author": "Khush, Mansi",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "firebase": "^8.7.1",
     "firebase-admin": "^10.0.1"

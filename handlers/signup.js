@@ -8,14 +8,13 @@ exports.signup = (req, res) => {
   .then((userCredential) => {
     db.collection("Users").doc(userCredential.user.uid).set({
       id: userCredential.user.uid, 
-      name: userCredential.user.displayName, 
+      name: req.body.name, 
       photoUrl: userCredential.user.photoURL, 
       email: userCredential.user.email, 
-      phoneNo: userCredential.user.phoneNumber,
+      phoneNo: req.body.phoneNo,
       emailVerified: false,
       phoneNoVerified: false
     }).then(() => {
-        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
         return res.status(200).json({general: "Signup Success"});
     });
   })

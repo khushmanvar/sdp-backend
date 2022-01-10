@@ -25,17 +25,25 @@ exports.conductLogin = (req, res) => {
 };
 
 exports.getConductorDetails = (req, res) => {
-  db.doc(`/Conductors/`)
-    .get()
+  let cid = req.params.cid;
+  db.doc(`/Conductors/${cid}`).get()
     .then((doc) => {
-      if(doc.exists) {
-        return doc.data();
-      } else {
-        return res.status(404).json({ error: "Conductor not found" });
-      }
+      return res.status(200).json({ "Name": doc.data().name, "Email": doc.data().email, "Mobile Number": doc.data().mobile })
     })
     .catch((err) => {
       console.error(err);
       return res.status(500).json({ error: err.code });
     });
+}
+
+exports.getBusDetails = (req, res) => {
+  let cid = req.params.cid;
+  db.doc(`/Conductors/${cid}`).get()
+    .then((doc) => {
+      return res.status(200).json({ buses: doc.data().Buses });
+    })
+    .catch((err) => {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    })
 }

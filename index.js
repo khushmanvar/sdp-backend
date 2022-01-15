@@ -8,6 +8,7 @@ const {search} = require("./handlers/searchBus")
 const {signup} = require("./handlers/signup");
 const {signin} = require("./handlers/signin");
 const {userDetails} = require("./handlers/userDetails");
+const { liveBook } = require('./handlers/liveBook');
 
 // express middlewares
 app.use(bodyParser.json());
@@ -24,6 +25,7 @@ app.get('/search', search);
 app.get('/user', userDetails);
 app.post('/signup', signup);
 app.post('/signin', signin);
+app.post('/livebook', liveBook);
 
 app.get('/p/:pid', function(req, res) {
   res.send("query param is: " + req.param("pid"));

@@ -8,6 +8,7 @@ const {search} = require("./handlers/searchBus")
 const {signup} = require("./handlers/signup");
 const {signin} = require("./handlers/signin");
 const {userDetails} = require("./handlers/userDetails");
+const { liveBook } = require('./handlers/liveBook');
 
 // express middlewares
 app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.get('/search', search);
 app.get('/user', userDetails);
 app.post('/signup', signup);
 app.post('/signin', signin);
+app.post('/livebook', liveBook);
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Easybus!')

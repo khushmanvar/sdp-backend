@@ -1,3 +1,4 @@
+const { db, admin } = require("../util/admin");
 const { firebase } = require("../util/fire");
 
 exports.liveBook = (req, res) => {
@@ -8,6 +9,7 @@ exports.liveBook = (req, res) => {
     var origin = req.body.origin
     var paymentMode = req.body.paymentMode
     var busId = req.body.busId
+    var uid = req.body.uid
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -18,7 +20,8 @@ exports.liveBook = (req, res) => {
     
     try{
         const database = firebase.database();
-        database.ref('/Buses/' + busId + '/' + currDate + '/LiveBooking/lt102').set({
+        const ticketDb = database.ref('/Buses/' + busId + '/' + currDate + '/LiveBooking/')
+        ticketDb.push({
                 'ApprovedStatus': 0,
                 'Destination': destination,
                 'Distance': distance,
@@ -26,8 +29,14 @@ exports.liveBook = (req, res) => {
                 'Origin': origin,
                 'PaymentMode': paymentMode,
                 'TimeStamp': currTime
-            }).then(() => {
-                return res.status(200).json({'general': 'Booking Successful'});
+            }).then((snapshot) => {
+                var id = snapshot.getKey()
+                database.ref('/Buses/' + busId + '/' + currDate + '/LiveBooking/' + id + '/').update({"id": id})
+                db.collection("Users").doc(uid).update({
+                    liveTickets: admin.firestore.FieldValue.arrayUnion(id)
+                }).then(() => {
+                    return res.status(200).json({'general': 'Booking Successful'});
+                  });        
             })
     }
     catch (error) {

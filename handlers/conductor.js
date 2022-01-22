@@ -24,6 +24,29 @@ exports.conductLogin = (req, res) => {
       });
 };
 
+exports.conductSignup = (req, res) => {
+  const user = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(user.email, user.password)
+    .then((data) => {
+      return data.user.getIdToken();
+    })
+    .then((token) => {
+      return res.json({ token });
+    })
+    .catch((err) => {
+      console.error(err);
+      return res
+        .status(403)
+        .json({ general: "Wrong credentials, please try again" });
+    });
+};
+
 exports.getConductorDetails = (req, res) => {
   let cid = req.params.cid;
   db.doc(`/Conductors/${cid}`).get()

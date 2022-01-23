@@ -13,12 +13,8 @@ const { prebook } = require('./handlers/prebook')
 
 // express middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors())
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); 
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 // admin routes
 app.get('/admin/:cid', getConductorDetails);

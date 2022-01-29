@@ -27,14 +27,7 @@ app.get('/user', userDetails);
 app.post('/signup', signup);
 app.post('/signin', signin);
 app.post('/livebook', liveBook);
-<<<<<<< HEAD
 app.post('/prebook', prebook);
-=======
->>>>>>> ab401685691f5faa11ae18ea57e822054eeaba91
-
-app.get('/p/:pid', function(req, res) {
-  res.send("query param is: " + req.param("pid"));
-})
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Easybus!')

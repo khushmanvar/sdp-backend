@@ -9,7 +9,7 @@ const {signup} = require("./handlers/signup");
 const {signin} = require("./handlers/signin");
 const {userDetails} = require("./handlers/userDetails");
 const { liveBook } = require('./handlers/liveBook');
-
+const { prebook } = require('./handlers/prebook')
 // express middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

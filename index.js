@@ -9,16 +9,11 @@ const {signup} = require("./handlers/signup");
 const {signin} = require("./handlers/signin");
 const {userDetails} = require("./handlers/userDetails");
 const { liveBook } = require('./handlers/liveBook');
-const { prebook } = require('./handlers/prebook')
 
 // express middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors())
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); 
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 // admin routes
 app.get('/admin/:cid', getConductorDetails);
@@ -32,7 +27,10 @@ app.get('/user', userDetails);
 app.post('/signup', signup);
 app.post('/signin', signin);
 app.post('/livebook', liveBook);
+<<<<<<< HEAD
 app.post('/prebook', prebook);
+=======
+>>>>>>> ab401685691f5faa11ae18ea57e822054eeaba91
 
 app.get('/p/:pid', function(req, res) {
   res.send("query param is: " + req.param("pid"));

@@ -9,5 +9,12 @@ exports.prebook = (req, res) => {
     };
 
     db.collection("Tickets").add(ticket)
+        .then((doc) => {
+            res.json({ "tid": doc.id });
+        })
+        .catch((err) => {
+            res.status(500).json({ error: 'something went wrong' });
+            console.error(err);
+          });
 
 }

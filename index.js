@@ -32,7 +32,7 @@ app.get('/user', userDetails);
 app.post('/signup', signup);
 app.post('/signin', signin);
 app.post('/livebook', liveBook);
-app.get('/prebook', prebook);
+app.post('/prebook', prebook);
 
 app.get('/p/:pid', function(req, res) {
   res.send("query param is: " + req.param("pid"));

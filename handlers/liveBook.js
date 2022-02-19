@@ -35,7 +35,12 @@ exports.liveBook = (req, res) => {
                 db.collection("Users").doc(uid).update({
                     liveTickets: admin.firestore.FieldValue.arrayUnion(id)
                 }).then(() => {
-                    return res.status(200).json({'general': 'Booking Successful'});
+                    database.ref('/Buses/' + busId + '/12-01-2022' + '/Crowd').get().then((crowd) => {
+                        crowd = parseInt(crowd.val()) + 1 
+                        database.ref('/Buses/' + busId + '/12-01-2022' + '/').update({"Crowd": crowd}).then(() => {
+                            return res.status(200).json({'general': 'Booking Successful'});
+                        })
+                    })
                   });        
             })
     }

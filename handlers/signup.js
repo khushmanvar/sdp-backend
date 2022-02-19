@@ -16,11 +16,8 @@ exports.signup = (req, res) => {
         phoneNoVerified: false
       })
     })
-    .then((data) => {
-      return data.user.getIdToken();
-    })
-    .then((token) => {
-      return res.json({ token });
+    .then(() => {
+      return res.json({general: "Profile Created Successfully"});
     })
     .catch((error) => {
       console.log(error.message);
